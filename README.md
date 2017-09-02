@@ -46,7 +46,7 @@ git clone https://github.com/alexellis/faas.git && cd faas
 ```
 
 ...initialize Docker Swarm
-````
+```
 docker swarm init
 ```
 
