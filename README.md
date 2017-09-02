@@ -64,8 +64,7 @@ mkdir -p ./function/hello-node && cd ./functions
 
 ...and create a handler.js file that will house our function.
 ```
-echo "module.exports = (req) => console.log('Hello! You said:', req)" >
-./hello-node/handler.js
+echo "module.exports = (req) => console.log('Hello! You said:', req)" > ./hello-node/handler.js
 ```
 
 We can house some configuration data in a .yml file which will give
