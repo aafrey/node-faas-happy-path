@@ -112,7 +112,8 @@ provider:
   gateway: <ip-address>:8080
 ...
 functions
-  image: aafrey/faas-hello-node
+  hello-node:
+    image: aafrey/faas-hello-node
 ...
 ```
 
