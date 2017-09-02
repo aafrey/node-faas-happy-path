@@ -28,7 +28,9 @@ there is a better tool for the job!
 
 `faas-cli` is a complementary package that significantly simplifies the
 function build and deployment process. To install:
-`curl -sSL https://cli.openfaas.com | sudo sh`
+```
+curl -sSL https://cli.openfaas.com | sudo sh
+```
 
 ...and that's it! Docker and faas-cli are the only two
 dependencies needed for this article.
@@ -39,22 +41,32 @@ We have our dependencies, now let's launch Open-FaaS so we have
 somewhere to deploy our function.
 
 Grab the code:
-`git clone https://github.com/alexellis/faas.git && cd faas`
+```
+git clone https://github.com/alexellis/faas.git && cd faas
+```
 
 ...initialize Docker Swarm
-`docker swarm init`
+````
+docker swarm init
+```
 
 ...and deploy Open-FaaS on Docker Swarm
-`./deploy_stack.sh`
+```
+./deploy_stack.sh
+```
 
 #### Building our function
 
 Let's build out a simple function directory...
-`mkdir -p ./function/hello-node && cd ./functions`
+```
+mkdir -p ./function/hello-node && cd ./functions
+```
 
 ...and create a handler.js file that will house our function.
-`echo "module.exports = (req) => console.log('Hello! You said:', req)" >
-./hello-node/handler.js`
+```
+echo "module.exports = (req) => console.log('Hello! You said:', req)" >
+./hello-node/handler.js
+```
 
 We can house some configuration data in a .yml file which will give
 `faas-cli` some build and deploy instructions. So lets create our
@@ -72,14 +84,20 @@ functions:
 ```
 
 And now it's build time!
-`faas-cli -action build -f ./stack.yml`
+```
+faas-cli -action build -f ./stack.yml
+```
 
 ... deploy to your local Open-FaaS instance.
-`faas-cli -action deploy -f ./stack.yml`
+```
+faas-cli -action deploy -f ./stack.yml
+```
 
 We should be all set to test out our function. We can do this on the
 command line with curl:
-`curl localhost:8080/function/hello-node -d "hurraaayyyyy!"`
+```
+curl localhost:8080/function/hello-node -d "hurraaayyyyy!"
+```
 
 or by visiting the UI in browser at `localhost:8080`
 
