@@ -131,13 +131,13 @@ like with any NodeJS project, dependencies can be included in a
 
 In our example, the directory structure would look like this:
 ```
-./functions
+functions
 |--stack.yml
 |--hello_node
    |--handler.js
    |--package.json
 ```
-> BONUS: By default, `faas-cli` will bundle all dependencies, including `devDependencies`. So after the initial build, a `./functions/template/Dockerfile` will appear. It's possible to edit/add to this file to include `ENV NODE_ENV=production` to eliminate devDependencies in the next build. Just make sure to include it before `RUN npm i`
+> BONUS: By default, `faas-cli` will bundle all dependencies, including `devDependencies`. So after the initial build, a `./template/Dockerfile` will appear. It's possible to edit/add to this file to include `ENV NODE_ENV=production` to eliminate devDependencies in the next build. Just make sure to include it before `RUN npm i`
 
 #### That's a wrap!
 
