@@ -18,7 +18,8 @@ the project currently has over 5000 Github stars and in addition to
 being powered by Docker Swarm, both a
 [Kubernetes](https://github.com/alexellis/faas-netes) and Rancher
 [Cattle](https://github.com/kenfdev/faas-rancher) backend have been built
-out by the community.
+out by the community. This past August, Alex even [presented](https://blog.alexellis.io/openfaas-cncf-workgroup/)
+to the Cloud Native Computing Foundation (CNCF)
 
 But what does OpenFaaS, or any Serverless/Functions as a Service provider
 really do? What is Serverless and why is it a "thing"?
@@ -44,7 +45,10 @@ Rather than having long running services, functions are only called when needed.
 many cases serverless providers charge by the second for usage rather
 than by the minute or hour, so event based functions that only run when
 called can lead to substantial savings when hosting services in the
-cloud.
+cloud. This can also lead to some unique challenges, like increased
+latency as functions may or may not be "warm". Read this
+[post](https://blog.alexellis.io/openfaas-serverless-acceleration/) to
+understand how OpenFaaS is tackling this issue.
 
 When compared to other, similar technologies, OpenFaaS offers some significant
 benefits. It can be used as a self hosted replacement for the major serverless providers like
@@ -69,6 +73,8 @@ to the Watchdog via STDOUT, and the watchdog passes back the HTTP
 response the the end consumer. Any language or utility that can read
 from STDIN and write to STDOUT can be used. That's OpenFaaS in a nutshell.
 
+![Function Watchdog](https://camo.githubusercontent.com/61c169ab5cd01346bc3dc7a11edc1d218f0be3b4/68747470733a2f2f7062732e7477696d672e636f6d2f6d656469612f4447536344626c554941416f34482d2e6a70673a6c61726765)
+
 There are a number of other pieces to the puzzle, like monitoring with
 Prometheus, the frontend gateway UI, the `faas-cli` tool and a good
 starting place to learn more would be the
@@ -81,23 +87,11 @@ and running with a simple NodeJS function using the OpenFaaS platform!
 
 ## Getting started with NodeJS on OpenFaaS
 
-The [OpenFaaS](https://github.com/alexellis/faas) project is a simple way to get started with Serverless
-technology. The project is spearheaded and maintained by ADP Principal Developer, open source enthusiast, and Docker Captain Alex Ellis but is open to contributions from the community.
-
-When compared to other, similar technologies, it offers some significant
-benefits. It can be used as a self hosted replacement of AWS, Google Cloud
-Functions, Azure Functions etc so using OpenFaaS would eliminate being
-tied to a particular provider. The platform is so flexible it can even
-run on a raspberry pi! It also is not limited to a particular language!
-The current cloud options have limits on what languages you can use,
-generally Node and Python are acceptable but what about R, C#, or even
-Cobol? OpenFaaS provides a unique language agnostic approach that make
-it very approachable for developers of all backgrounds.
-
 There are a number of resources that document getting started with
 OpenFaaS, in fact the entire stack can be deployed in less than 60
-seconds! This article however will document how easy it is to setup a
-simple NodeJS function and deploy it to the OpenFaaS service
+seconds when following the instructions from the README on GitHub!
+This article will focus on how easy it is to setup a simple NodeJS
+function and deploy it.
 
 #### Dependencies
 
