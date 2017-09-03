@@ -1,32 +1,80 @@
 ## Getting Aquainted with OpenFaaS
 
-Back in January, Alex Ellis released a blog
+The [OpenFaaS](https://github.com/alexellis/faas) project is a simple
+way to get started with Serverless technology. The project is spearheaded
+and maintained by ADP Principal Developer, open source enthusiast,
+and Docker Captain Alex Ellis but is open to contributions from the community.
+
+Back in January, Alex released a blog
 [post](https://blog.alexellis.io/functions-as-a-service/) answering a
 very interesting question. What would it look like to build your own
-Serverless infrastructure with Docker? The original post covers some
-previous efforts by members of the Docker community but then outlines a
-rather novel solution, but before diving into that, it may help to know
-a bit more about what Serverless or Functions as a Service (hereafter,
-FaaS) entails.
+Serverless infrastructure with Docker? The post outlined some previous
+attempts/ideas from other Docker community members before diving into a
+what would eventually become OpenFaaS. Nine months on, and the project
+has seen some remarkable growth. Alex presented the
+[OpenFaaS](https://github.com/alexellis/faas) project at Dockercon 2017
+after being selected as a winner for the Dockercon Cool Hacks challenge,
+the project currently has over 5000 Github stars and in addition to
+being powered by Docker Swarm, both a
+[Kubernetes](https://github.com/alexellis/faas-netes) and Rancher
+[Cattle](https://github.com/kenfdev/faas-rancher) backend have been built
+out by the community.
 
-> FaaS and Serverless will be used interchangeably throught the
+But what does OpenFaaS, or any Serverless/Functions as a Service provider
+really do? What is Serverless and why is it a "thing"?
+
+> FaaS and Serverless will be used interchangeably throughout the
 > remainder of the article
 
 Martin Fowler's bliki [page](https://martinfowler.com/articles/serverless.html)
 contains a more thorough explanation of FaaS/Serverless, but this article will offer a brief
 description as it relates to OpenFaaS. So when thinking about FaaS, it is helpful to think
-about taking an application, breaking it down into it's simplest parts,
+about taking an application, breaking it apart into it's simplest parts,
 and then connecting those pieces back together with some sort of
 network protocol (generally HTTP). Similar to a microservices driven
 approach, this allows for pieces of an application to be built
 independant of one another, in addition FaaS can differ from
 microservices in that in many cases the management of the
-service/function is
-off-loaded to the cloud. As it relates to OpenFaaS, it also allows
-for those pieces to be written in any language. Many Serverless
-providers have limitations on which languages are supported. Functions
-running on OpenFaaS can be written in any language, or simply bundle a command
-line utility like ImageMagick instead.
+service/function is off-loaded to the cloud. This allows a developer or team
+to focus on the discrete piece of code needed to perform an
+operation. No worrying about how or where it will be running.
+
+Serverless functions also lend themselves very well to event driven architecture.
+Rather than having long running services, functions are only called when needed. And in
+many cases serverless providers charge by the second for usage rather
+than by the minute or hour, so event based functions that only run when
+called can lead to substantial savings when hosting services in the
+cloud.
+
+When compared to other, similar technologies, OpenFaaS offers some significant
+benefits. It can be used as a self hosted replacement for the major serverless providers like
+AWS, Google Cloud Functions, Azure Functions etc. This eliminates being
+tied to a particular provider. The platform is so flexible it can even
+run on a raspberry pi or your standard laptop! It also is not limited to a particular language.
+The current cloud options often have limits on what languages you can use,
+generally Node and Python are acceptable but what about Go, R, C#, or even
+Cobol? OpenFaaS provides a unique language agnostic approach that make
+it very approachable for developers of all backgrounds. Functions
+running on OpenFaaS are not limited to just code snippets, it is possible
+to bundle an entire command line utility, like ImageMagick, and run it
+as an OpenFaaS function.
+
+Now onto some of the technical details. At it's simplest, OpenFaaS consists of two
+parts. The first part is the API Gateway that accepts/routes requests to the second part,
+the Function Watchdog. The Watchdog is packaged alongside each function, and
+is really the key to the language agnostic capabilities of OpenFaaS. It
+parses the HTTP request, extracts the body and passes it to the function
+via STDIN. The function processes the data and spits the response back
+to the Watchdog via STDOUT, and the watchdog passes back the HTTP
+response the the end consumer. Any language or utility that can read
+from STDIN and write to STDOUT can be used. That's OpenFaaS in a nutshell.
+
+There are a number of other pieces to the puzzle, like monitoring with
+Prometheus, the frontend gateway UI, the `faas-cli` tool and a good
+starting place to learn more would be the
+[OpenFaaS](https://github.com/alexellis/faas) GitHub repository
+and this blog
+[post](https://blog.alexellis.io/introducing-functions-as-a-service/) by Alex.
 
 The remainder of this article will include instructions on how to get up
 and running with a simple NodeJS function using the OpenFaaS platform!
