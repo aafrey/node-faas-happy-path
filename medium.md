@@ -13,7 +13,7 @@ attempts/ideas from other Docker community members before diving into a
 what would eventually become OpenFaaS. Nine months on, and the project
 has seen some remarkable growth. Alex presented the
 [OpenFaaS](https://github.com/alexellis/faas) project at Dockercon 2017
-after being selected as a winner for the Dockercon Cool Hacks challenge,
+after being selected as a winner for the Moby's Cool Hacks challenge,
 the project currently has over 5000 Github stars and in addition to
 being powered by Docker Swarm, both a
 [Kubernetes](https://github.com/alexellis/faas-netes) and Rancher
@@ -109,7 +109,7 @@ curl -sSL https://cli.openfaas.com | sudo sh
 ```
 
 ...and that's it! Docker and faas-cli are the only two
-dependencies needed for this article.
+dependencies needed to complete the steps below.
 
 #### Initializing the OpenFaaS Service
 
