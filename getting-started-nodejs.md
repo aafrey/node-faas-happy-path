@@ -8,7 +8,7 @@ function and deploy it.
 
 #### Dependencies
 
-This article assumes installation of at least Docker 1.13. Docker
+This article assumes installation of at least `Docker 17.05`. Docker
 provides the bare minimum necessary to build and deploy function but
 there is a better tool for the job!
 
@@ -47,7 +47,7 @@ docker swarm init
 
 Let's build out a simple function directory...
 ```
-mkdir -p ./function/hello-node && cd ./functions
+mkdir -p ./functions/hello-node && cd ./functions
 ```
 
 ...and create a handler.js file that will house our function.
@@ -125,7 +125,7 @@ functions
    |--handler.js
    |--package.json
 ```
-> BONUS: By default, `faas-cli` will bundle all dependencies, including `devDependencies`. So after the initial build, a `./template/Dockerfile` will appear. It's possible to edit/add to this file to include `ENV NODE_ENV=production` to eliminate devDependencies in the next build. Just make sure to include it before `RUN npm i`
+> BONUS: By default, `faas-cli` will bundle all dependencies, including `devDependencies`. So after the initial build, a `./template/Dockerfile` will appear. It's possible to edit/add to this file to include `ENV NODE_ENV=production` to eliminate devDependencies in the next build. Just make sure to include it before `RUN npm i`. This will keep images sizes to a minimum.
 
 #### That's a wrap!
 
