@@ -81,6 +81,7 @@ starting place to learn more would be the
 [OpenFaaS](https://github.com/alexellis/faas) GitHub repository
 and this blog
 [post](https://blog.alexellis.io/introducing-functions-as-a-service/) by Alex.
+![OpenFaaS](https://camo.githubusercontent.com/08bc7c0c4f882ef5eadaed797388b27b1a3ca056/68747470733a2f2f7062732e7477696d672e636f6d2f6d656469612f4446726b46344e586f41414a774e322e6a7067)
 
 The remainder of this article will include instructions on how to get up
 and running with a simple NodeJS function using the OpenFaaS platform!
